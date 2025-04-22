@@ -1,0 +1,26 @@
+
+//@Use  to use module in scss
+// @use '../../styles/variables' as *;
+.container{
+    display: flex;
+    justify-content: center;
+}
+.upload{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:1rem;
+    padding:1rem;
+    //&__ represent nested selecter from parent component
+    .__btn {
+        background:blue;
+        color:white;
+        padding:0.5rem;
+        border: none;
+        cursor: pointer;
+
+    }
+    &-input{
+        width:40px;
+    }
+}
