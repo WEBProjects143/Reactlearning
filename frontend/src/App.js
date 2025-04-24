@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css';
 import videojs from "video.js";
 import VideoPlayer from './VideoStreaming/videoupload/VideoStream'
 import { useRef } from 'react'
+import {io} from "socket.io-client";
 
 function App() {
   const playerRef = useRef(null)
@@ -31,6 +32,19 @@ function App() {
       videojs.log("player will dispose");
     });
   };
+
+
+
+  useEffect(()=>{
+    const url="http://localhost:4000"
+    const socket =io(url);
+    socket.on("connect",()=>{
+      console.log("Client side socket is connected");
+    })
+    socket.emit("chat message","hello bhupendra")
+    return ()=> socket.off("chat message")
+  },[])
+
   return (
     <>
       <div>

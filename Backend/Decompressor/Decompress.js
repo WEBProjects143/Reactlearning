@@ -1,5 +1,20 @@
 const  {Duplex } =require("stream")
+const  {Transform,Writable } =require("stream")
+
 const fs=require("fs");
+
+//transform stream
+ class Uppercase extends Transform{
+   _transform(chunk,encoding,callback){
+    this.push(chunk.toString().toUpperCase())
+    callback()
+   }
+ }
+
+ const upperCaseStream=new Uppercase()
+
+ process.stdin.pipe(upperCaseStream).pipe(process.stdout)
+
 //duplex stream
 
 class duplexStream extends Duplex {
@@ -17,7 +32,7 @@ class duplexStream extends Duplex {
     }
 }
 const streamDuplex=new duplexStream();
-// streamDuplex.write("my name is khan Im not a terrorist")
+streamDuplex.write("my name is khan Im not a terrorist")
 streamDuplex.on("data",(chunk)=>{console.log(chunk.toString())})
 
 //readable stream
