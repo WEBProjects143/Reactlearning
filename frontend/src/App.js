@@ -4,6 +4,10 @@ import videojs from "video.js";
 import VideoPlayer from './VideoStreaming/videoupload/VideoStream'
 import { useRef } from 'react'
 import {io} from "socket.io-client";
+import { Routes, Route } from "react-router-dom";
+import HomePage from './Component/Home/Home';
+import VideoUploadPage from './Component/Video/Video';
+import ChatApp from './Component/chat-app/chatapp';
 
 function App() {
   const playerRef = useRef(null)
@@ -46,14 +50,20 @@ function App() {
   },[])
 
   return (
+ 
     <>
-      <div>
+      {/* <div>
         <h1>Video player</h1>
       </div>
       <VideoPlayer
       options={options}
       onReady={handlePlayerReady}
-      />
+      /> */}
+        <Routes>
+          <Route path="/home" element ={<HomePage/>}/>
+          <Route path="/video" element ={<VideoUploadPage/>}/>
+          <Route path="/chat-app" element ={<ChatApp/>}/>
+        </Routes>
     </>
   )
 }
