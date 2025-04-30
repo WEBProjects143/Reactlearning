@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from './Component/Home/Home';
 import VideoUploadPage from './Component/Video/Video';
 import ChatApp from './Component/chat-app/chatapp';
+import { Todo } from './Todoapp/TodoConatiner';
 
 function App() {
   const playerRef = useRef(null)
@@ -63,6 +64,7 @@ function App() {
           <Route path="/home" element ={<HomePage/>}/>
           <Route path="/video" element ={<VideoUploadPage/>}/>
           <Route path="/chat-app" element ={<ChatApp/>}/>
+          <Route path="/todo" element ={<Todo/>}/>
         </Routes>
     </>
   )
