@@ -10,6 +10,7 @@ input{
 .inputs{
     width: 100%;
     text-align:left ;
+    /* padding:10px; */
 }
 .container{
     text-align: center;
