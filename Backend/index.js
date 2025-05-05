@@ -61,15 +61,33 @@ io.on("connection", (socket) => {
   });
 });
 
+//adding cluster
+const cluster=require("cluster");
+const os =require("os");
+
+const TotalCPU=os.cpus().length
+console.log("length"+ TotalCPU)
 //Database create in sequalizing
 const seqDb=require("./DB/sequalizedb");
-server.listen(4000,async()=>{console.log("Server is streaming")
 
-    try {  
-        await seqDb.authenticate();//check your sequilze database connect or not
-        await seqDb.sync({force:true})//Create db if not existed
-        console.log("sequalize database connected....")
-    } catch (error) {
-        
-    }
+if(cluster.isPrimary){
+  for(let i=0;i<=TotalCPU;i++){
+    cluster.fork()
+  }
+}else{
+  app.use("/",(req,res)=>{
+    res.status(200).json({msg:`${process.pid} is running `})
 });
+  const PORT=4000
+  server.listen(PORT,async()=>{console.log("Server is streaming")
+ 
+      try {  
+          await seqDb.authenticate();//check your sequilze database connect or not
+          await seqDb.sync({force:true})//Create db if not existed
+          console.log("sequalize database connected....")
+      } catch (error) {
+          
+      }
+    
+  });
+}
