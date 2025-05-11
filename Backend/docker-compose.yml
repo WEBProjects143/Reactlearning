@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  reactdocker: 
+    build: .
+    ports:
+      - "4000:5000"
+    volumes:
+      - ./:/Backend
+    environment:
+       - PORT=4000
+
+
