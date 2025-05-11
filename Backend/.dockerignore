@@ -1,0 +1,13 @@
+
+node_modules
+# Environment files
+.env
+.env.local
+
+# Docker files
+Dockerfile
+docker-compose.yml
+
+# Git
+.git
+.gitignore
