@@ -1,10 +1,12 @@
+import { useContext } from "react";
+import { TodoContext } from "./store/TodoContextStore";
 import TodoItem from "./TodoItem";
-export const TodoItems = ({todoitems,handleDeleteItem}) => {
-  console.log(todoitems)
+export const TodoItems = () => {
+  const {todoItems,deleteItem}=useContext(TodoContext)
   return (
     <>
-        {todoitems.map(item=>(
-          <TodoItem  todotask={item.task} tododate={item.date} handleDeleteItem={handleDeleteItem} /> 
+          {todoItems.map(item=>(
+          <TodoItem  todotask={item.task} tododate={item.date} handleDeleteItem={deleteItem} /> 
          ))}
     </>     
   );
