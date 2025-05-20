@@ -1,6 +1,9 @@
 version: "3.8"
 
 services:
+  nginx:
+    ports:
+      - "80:80"
   reactdocker:
     build:
       context: .
