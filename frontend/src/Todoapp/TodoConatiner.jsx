@@ -1,4 +1,6 @@
 
+// React Todo project
+
 import { TodoInputs } from "./todoInputs";
 import { TodoItems } from "./TodoItems";
 import "./Todo.css";
