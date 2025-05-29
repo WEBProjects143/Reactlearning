@@ -5,7 +5,9 @@ const path = require("path");
 const cors = require("cors");
 const router = require("./route/streamingRoute");
 const seqRouter=require("./route/sequalizeRoute")
-const seqDB=require("./DB/sequalizedb")
+const seqDB=require("./DB/sequalizedb");
+const CustomeError=require("./ErrorHandler/customErrorHandler");
+const UtilError=require("./utils/utilError")
 
 const { Server } = require("socket.io");
 const { createServer } = require("http");
@@ -37,6 +39,7 @@ app.use("/api/test",(req,res)=>{
     console.log("testing stream......")
     res.status(200).json({msg:"hello there"})
 });
+
 
 //It tells Express to serve static files (like images, videos, PDFs, etc.) from the files folder.
 
@@ -75,9 +78,10 @@ if(cluster.isPrimary){
     cluster.fork()
   }
 }else{
-  app.use("/",(req,res)=>{
-    res.status(200).json({msg:`${process.pid} is running `})
+  app.use("/",(err,req,res)=>{
+   throw new CustomeError("this is a custom error",404)
 });
+app.use(UtilError);
   const PORT=4000
   server.listen(PORT,async()=>{console.log("Server is streaming")
  
