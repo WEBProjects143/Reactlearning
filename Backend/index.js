@@ -7,7 +7,7 @@ const router = require("./route/streamingRoute");
 const seqRouter=require("./route/sequalizeRoute")
 const seqDB=require("./DB/sequalizedb");
 const CustomeError=require("./ErrorHandler/customErrorHandler");
-const UtilError=require("./utils/utilError")
+const UtilError=require("./utils/utilError");
 
 const { Server } = require("socket.io");
 const { createServer } = require("http");
@@ -39,7 +39,6 @@ app.use("/api/test",(req,res)=>{
     console.log("testing stream......")
     res.status(200).json({msg:"hello there"})
 });
-
 
 //It tells Express to serve static files (like images, videos, PDFs, etc.) from the files folder.
 
@@ -81,17 +80,15 @@ if(cluster.isPrimary){
   app.use("/",(err,req,res)=>{
    throw new CustomeError("this is a custom error",404)
 });
+//sequelize db
+const testDB=require("./DB/seqTable")
 app.use(UtilError);
   const PORT=4000
   server.listen(PORT,async()=>{console.log("Server is streaming")
- 
-      try {  
-          await seqDb.authenticate();//check your sequilze database connect or not
-          await seqDb.sync({force:true})//Create db if not existed
-          console.log("sequalize database connected....")
-      } catch (error) {
-          
-      }
-    
+  testDB.sequelize.sync().then(()=>
+    console.log("testdb is created...")
+  ).catch((err)=>{
+    console.log("Sequelize err  " +err)
+  })
   });
 }
