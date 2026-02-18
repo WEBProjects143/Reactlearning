@@ -1,23 +1,8 @@
-const redis = require('redis');
+const redis = require("redis");
+const client= redis.createClient();
 
-// Connect to Redis (default host: localhost, port: 6379)
-const client = redis.createClient();
+const checkCache=(req,res)=>{
 
-client.on('error', (err) => {
-  console.error('Redis Client Error', err);
-});
 
-async function main() {
-  await client.connect();
-
-  // Set a value
-  await client.set('myKey', 'Hello from Redis!');
-
-  // Get a value
-  const value = await client.get('myKey');
-  console.log('Value from Redis:', value);
-
-  await client.quit();
+  
 }
-
-main();

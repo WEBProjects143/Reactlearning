@@ -6,6 +6,7 @@ import { useRef } from 'react'
 import {io} from "socket.io-client";
 import { Routes, Route } from "react-router-dom";
 import HomePage from './Component/Home/Home';
+import Login from "./Component/login/login"
 import VideoUploadPage from './Component/Video/Video';
 import ChatApp from './Component/chat-app/chatapp';
 import { Todo } from './Todoapp/TodoConatiner';
@@ -64,7 +65,7 @@ function App() {
           <Route path="/home" element ={<HomePage/>}/>
           <Route path="/video" element ={<VideoUploadPage/>}/>
           <Route path="/chat-app" element ={<ChatApp/>}/>
-          <Route path="/todo" element ={<Todo/>}/>
+          <Route path="/login" element={<Login/>}></Route>
         </Routes>
     </>
   )

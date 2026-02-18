@@ -1,1 +1,21 @@
-hello my name is bhupendra
+Dear Hiring Manager,
+
+I hope you are doing well.
+
+I am writing to apply for the Software Technical Support position at your organization. I have experience supporting users with software-related issues such as feature functionality problems, login and access issues, payment and billing concerns, and application errors.
+
+In addition to my support experience, I have foundational knowledge of HTML, CSS, JavaScript, React, and Node.js. While this is not hands-on development experience, it helps me understand application workflows, identify issues more effectively, and communicate clearly with development teams during issue resolution.
+
+I regularly analyze user-reported issues, generate and manage support tickets, and coordinate with internal teams to ensure timely resolution. I also assist users with software configuration and third-party integrations, while maintaining clear documentation and professional communication.
+
+I have strong problem-solving skills and a customer-focused mindset, and I am confident in my ability to contribute positively to your support team.
+
+Please find my resume attached for your review. I would welcome the opportunity to discuss this opportunity further.
+
+Thank you for your time and consideration.
+
+Kind regards,
+[Your Full Name]
+[Your Phone Number]
+[Your Email Address]
+[LinkedIn Profile – optional]
